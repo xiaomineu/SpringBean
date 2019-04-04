@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean class="com.imooc.class3.AnotherBean" id="anotherBean"/>
+    <bean class="com.imooc.class3.Bean" id="bean">
+        <constructor-arg index="0" name="anotherBean"
+                         type="com.imooc.class3.AnotherBean"
+                         ref="anotherBean"/>
+        <constructor-arg index="1" name="string"
+                         type="java.lang.String"
+                         value="chinese"/>
+
+        <property name="anotherBean1" ref="anotherBean"/>
+        <property name="string1" value="american"/>
+
+        <property name="stringList">
+                <util:list>
+                    <value>"listString is well done"</value>
+                    <value>"listString is not good"</value>
+                </util:list>
+        </property>
+
+        <property name="anotherBeanList">
+            <list>
+                <ref bean="anotherBean"/>
+                <ref bean="anotherBean"/>
+            </list>
+        </property>
+
+        <property name="stringSet">
+            <set>
+                <value>"StringSet is well done"</value>
+                <value>"StringSet is not good"</value>
+            </set>
+        </property>
+
+        <property name="anotherBeanSet">
+            <set>
+                <ref bean="anotherBean"/>
+                <ref bean="anotherBean"/>
+            </set>
+        </property>
+
+        <property name="stringMap">
+            <map>
+                <entry key="kobe" value="NBA"/>
+                <entry key="Tom" value="ABA"/>
+            </map>
+        </property>
+
+        <property name="anotherBeanAnotherBeanMap">
+            <map>
+                <entry key-ref="anotherBean" value-ref="anotherBean"/>
+                <entry key-ref="anotherBean" value-ref="anotherBean"/>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="zhangmin">HUST</prop>
+            </props>
+        </property>
+
+        <property name="anotherBean2">
+            <null></null>
+        </property>
+
+    </bean>
+
+
+    <!--<bean class="com.imooc.class3.Bean" id="bean"-->
+          <!--c:anotherBean-ref="anotherBean" c:string="chinese"-->
+          <!--p:anotherBean1-ref="anotherBean" p:string1="american"/>-->
+
+</beans>
